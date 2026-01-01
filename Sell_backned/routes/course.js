@@ -9,6 +9,7 @@ courseRouter.post("/purchase", (req, res) => {
   });
 });
 
+
 // GET /api/v1/course/preview
 courseRouter.get("/preview", (req, res) => {
   res.json({

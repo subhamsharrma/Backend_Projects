@@ -1,8 +1,11 @@
+ 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Types.ObjectId;
+const mongourl = "mongodb+srv://thinkpositive:alluallu@subhamsharrmadb.s56xe89.mongodb.net/current";
 
-const mongourl = "mongodb+srv://thinkpositive:alluallu@subhamsharrmadb.s56xe89.mongodb.net/learncode";
+
+
 
 // 1. Define Schemas
 const userSchema = new Schema({
@@ -17,6 +20,7 @@ const adminSchema = new Schema({
   password: String,
   firstName: String,
   lastName: String,
+
 });
 
 const courseSchema = new Schema({
@@ -54,78 +58,49 @@ const REalcourse = new courseModel({
   creatorId: new ObjectId(),
 });
 
+
+
 // DEMO USERS (all meaningful)
-const userDemo = new userModel({
+const User1 = new userModel({
   email: "rahul.verma@example.com",
   password: "rahul@2024",
   firstName: "Rahul",
   lastName: "Verma",
 });
 
-const userdemo2 = new userModel({
+const User2 = new userModel({
   email: "ananya.singh@example.com",
   password: "ananya#123",
   firstName: "Ananya",
   lastName: "Singh",
 });
 
-const userdemo3 = new userModel({
+const User3 = new userModel({
   email: "arjun.patel@example.com",
   password: "arjun789",
   firstName: "Arjun",
   lastName: "Patel",
 });
+ 
 
-const userdemo4 = new userModel({
-  email: "kavya.shah@example.com",
-  password: "kavya456",
-  firstName: "Kavya",
-  lastName: "Shah",
-});
+// -------------------------------------------------------------------------------
+async function saveUsersInOrder() {
+  await User1.save();
+  console.log("Dummy user1 added");
 
-const userdemo34 = new userModel({
-  email: "devansh.mehra@example.com",
-  password: "devansh2025",
-  firstName: "Devansh",
-  lastName: "Mehra",
-});
+  await User2.save();
+  console.log("Dummy user2 added");
 
-const userdemo343 = new userModel({
-  email: "subham.sharma@example.com",
-  password: "subham123",
-  firstName: "Subham",
-  lastName: "Sharma",
-});
+  await User3.save();
+  console.log("Dummy user3 added");
+}
 
-// let a user name with allua in user table 
-const userdemo3443 = new userModel({
-  email: "alluallu@example.com",
-  password: "allu@2024",
-  firstName: "Allu",
-  lastName: "Arjun",
-});
+saveUsersInOrder();
 
 
-userdemo3443.save();
-userdemo343.save();
-userdemo34.save();
-userdemo4.save();
+  // -------------------------------------------------------------------------------
 
 
-userdemo2
-  .save()
-  .then(() => console.log("Dummy user2 added"))
-  .catch((err) => console.error("Error adding dummy user2:", err));
-
-userDemo
-  .save()
-  .then(() => console.log("Dummy user added"))
-  .catch((err) => console.error("Error adding dummy user:", err));
-
-userdemo3
-  .save()
-  .then(() => console.log("Dummy user3 added"))
-  .catch((err) => console.error("Error adding dummy user3:", err));
 
 REalcourse
   .save()
