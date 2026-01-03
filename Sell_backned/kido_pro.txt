@@ -1,0 +1,29 @@
+🧾 2. Notes Keeper (In-memory CRUD App)
+Notes Keeper v2 (Now with MongoDB)
+4. Auth System (JWT Login/Signup API)
+Mini E-commerce API (FAANG-style capstone)
+
+Goal: Combine everything.
+Stack: Node.js + Express + MongoDB + JWT
+Real-Time Chat App (Backend Only)
+Blog API with Search, Pagination & Comments
+. AI Quote Generator API (External API + Caching)
+
+
+
+heygen adn stripe like Frontend
+------------------------
+REAC                   |
+MongoDB
+Nodejs 
+                |
+    
+                       |
+                       |
+                       |
+                       |
+                       |
+                       |
+------------------------
+                     
+                       

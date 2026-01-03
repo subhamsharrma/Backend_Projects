@@ -1,47 +1,3 @@
-// const { Router } = require("express");
-// const jwt = require("jsonwebtoken");
-// const adminRouter = Router();
-// const JWT_Admin_PASSWORD = "252345243525";
-
-// // bycypt / zod / json webtoken jwt
-// //  let implement authentication logic here 
-
-// // POST /api/v1/admin/signin
-
-
-// adminRouter.post("/signin", (req, res) => {
-//   // beginner: assume admin is valid (no DB yet)
-//   const adminId = 1;
-
-//   const token = jwt.sign(
-//     { adminId, role: "admin" },   // payload
-//     JWT_Admin_PASSWORD,           // secret
-//     { expiresIn: "1h" }           // optional but good
-//   );
-
-//   res.json({
-//     message: "Admin signed in",
-//     token: token
-//   });
-// });
-
-
-
-// // POST /api/v1/admin/signup
-// adminRouter.get("/signup", (req, res) => {
-//   res.json({
-//     message: "Admin signup endpoint",
-//   });
-// });
-
-// // POST /api/v1/admin/signin
-// adminRouter.get("/signin", (req, res) => {
-//   res.json({
-//     message: "Admin signin endpoint2",
-//   });
-// });
-
-// module.exports = { adminRouter };
 
 // // npm run start npm run start npm run start npm run start npm run start npmnpm run start 
 require("dotenv").config();
@@ -56,11 +12,16 @@ const { adminMiddleware } = require("../middleware/admin");
 
 
 // call = api/v1/admin/signup
+
 adminRouter.post("/signup", async function(req, res) {
     const { email, password, firstName, lastName } = req.body; // TODO: adding zod validation
     // TODO: hash the password so plaintext pw is not stored in the DB
+    if (!email || !password || !firstName || !lastName) {
+        return res.status(400).json({
+            message: "Missing required fields"
+        })
+    }
 
-    // TODO: Put inside a try catch block
     await adminModel.create({
         email: email,
         password: password,
@@ -72,6 +33,7 @@ adminRouter.post("/signup", async function(req, res) {
         message: "Signup succeeded"
     })
 })
+
 //  call = api/v1/admin/signin
 adminRouter.post("/signin", async function(req, res) {
     const { email, password } = req.body;
@@ -81,8 +43,7 @@ adminRouter.post("/signin", async function(req, res) {
         email: email,
         password: password
     });
-
-    if (admin) {
+    if (admin != null) {
         const token = jwt.sign({
             id: admin._id
         }, JWT_ADMIN_PASSWORD);
@@ -99,6 +60,8 @@ adminRouter.post("/signin", async function(req, res) {
     }
 })
 
+
+// call = api/v1/admin/course
 adminRouter.post("/course", adminMiddleware, async function(req, res) {
     const adminId = req.userId;
 
@@ -140,6 +103,9 @@ adminRouter.put("/course", adminMiddleware, async function(req, res) {
         courseId: course._id
     })
 })
+
+
+// call = api/v1/admin/course/bulk
 
 adminRouter.get("/course/bulk", adminMiddleware,async function(req, res) {
     const adminId = req.userId;
