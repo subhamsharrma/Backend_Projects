@@ -1,0 +1,11 @@
+{
+  "name": "backned-eccomerce",
+  "version": "1.0.0",
+  "description": "project for ecommerce backned",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "subham",
+  "license": "ISC"
+}
