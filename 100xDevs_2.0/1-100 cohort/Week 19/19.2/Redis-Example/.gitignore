@@ -1,0 +1,11 @@
+/express-backend/node_modules
+/express-backend/dist
+
+/worker/node_modules
+/worker/dist
+
+/pub-sub/node_modules
+/pub-sub/dist
+
+/websocket-server/BE/node_modules
+/websocket-server/BE/dist
