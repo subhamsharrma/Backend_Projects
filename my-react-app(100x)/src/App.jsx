@@ -1,42 +1,39 @@
+// // (This is React JS, not C++. useEffect is React-only.)
 
-import './App.css'
-import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router-dom";
+// import { useState, useEffect } from "react";
+
+// function App() {
+//   const [count, setCount] = useState(0);
+//   useEffect(() => {
+//     document.title = `Count is ${count}`;
+//   }, [count]); // dependency array
+
+
+//   return (
+//     <div>
+//       <p>Count: {count}</p>
+//       <button onClick={() => setCount(count + 1)}>+</button>
+//       <button onClick={() => setCount(count - 1)}>-</button>
+
+//     </div>
+
+//   );
+
+// }   
+
+// export default App;
+
+// App.jsx
+import { AuthContext } from "./AuthContext";
 
 function App() {
+  const user = { name: "Subham", loggedIn: true };
 
-  return <div>
-    <BrowserRouter>
-      <Link to="/">Allen</Link>
-      | 
-      <Link to="/neet/online-coaching-class-11">Class 11</Link> 
-      | 
-      <Link to="/neet/online-coaching-class-12">Class 12</Link>
-      <Routes>
-        <Route path="/neet/online-coaching-class-11" element={<Class11Program />} />
-        <Route path="/neet/online-coaching-class-12" element={<Class12Program />} />
-        <Route path="/" element={<Landing />} />
-      </Routes>
-    </BrowserRouter>
-  </div>
+  return (
+    <AuthContext.Provider value={user}>
+      <Dashboard />
+    </AuthContext.Provider>
+  );
 }
 
-function Landing() {
-  return <div>
-    Welcome to allen
-  </div>
-}
-
-function Class11Program() {
-  return <div>
-      NEET programs for Class 11th
-  </div>
-}
-
-function Class12Program() {
-  
-  return <div>
-      NEET programs for Class 12th
-  </div>
-}
-
-export default App
+export default App;
